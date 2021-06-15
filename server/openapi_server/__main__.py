@@ -15,7 +15,7 @@ app.add_url_rule('/ui', 'ui', lambda: flask.redirect('/api/v1/ui'))
 
 
 def main():
-    app.run(port=8080, debug=False)
+    app.run(port=8080, debug=True)
 
 
 if __name__ == '__main__':

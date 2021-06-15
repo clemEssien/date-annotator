@@ -24,6 +24,7 @@ RUN pip install --no-cache-dir \
 WORKDIR /
 COPY docker-entrypoint.sh .
 RUN chmod +x docker-entrypoint.sh
+RUN pyspark --packages com.johnsnowlabs.nlp:spark-nlp_2.12:3.1.0
 
 EXPOSE 8080
 
