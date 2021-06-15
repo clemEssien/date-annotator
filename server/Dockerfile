@@ -24,7 +24,14 @@ RUN pip install --no-cache-dir \
 WORKDIR /
 COPY docker-entrypoint.sh .
 RUN chmod +x docker-entrypoint.sh
-RUN pyspark --packages com.johnsnowlabs.nlp:spark-nlp_2.12:3.1.0
+
+# Setup JAVA_HOME
+ENV JAVA_HOME /usr/lib/jvm/java-8-openjdk-amd64/
+RUN export JAVA_HOME
+
+RUN export SPARK_HOME=/opt/spark
+RUN export PATH=$PATH:/opt/spark/bin:/opt/spark/sbin
+RUN export PYSPARK_PYTHON=/usr/bin/python3
 
 EXPOSE 8080
 
