@@ -62,9 +62,13 @@ ner_converter = NerConverter()\
 
 nlpPipeline = Pipeline(stages=[documentAssembler, sentenceDetector, tokenizer, word_embeddings, deid_ner, ner_converter])
 
-input_df = [("""My name is Wolfgang and I live in Columbia Missouri . My phone number is
-alternate no is 5731111111. Tom's email is wolfgang_00000@yahoo.com. My website is""" \
-"""www.stilt.com. My social security is 886067534. I was born on 1st of January 1900. Today is 07/09/2021.""")]
+input_df = [("""My name is Wolfgang and I live at 1000 Ashland Street 65202 Columbia Missouri United States. My phone number is 572401245
+alternate no is 5731111111. Tom's email is wolfgang_02@yahoo.com. My favorite website is
+http://www.goal.com. My social security is 886-12-1234 or simpley written as 886121234. I was born on 1st of January 1900. 
+Today is 07/09/2021. I saw the doctor at Boone Medical Center.  
+A. Record date : 2093-01-13, David Hale, M.D., Name : Hendrickson, Ora MR. # 7194334 
+Date : 01/13/93 PCP : Oliveira, 25-year-old, Record date : 1-11-2000. Cocke County Baptist Hospital. 0295 Keats Street. 
+Phone +1 (302) 786-5227. Patient's complaints first surfaced when he started working for Brothers Coal-Mine.""")]
 spark_df = spark.createDataFrame([input_df],["text"])
 
 model = nlpPipeline.fit(spark.createDataFrame([[""]]).toDF("text"))
