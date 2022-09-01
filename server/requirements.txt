@@ -2,4 +2,4 @@ connexion[swagger-ui]==2.7.0
 python_dateutil==2.8.1
 swagger-ui-bundle==0.0.8
 pyspark==3.1.1
-spark-nlp==3.1.0
+spark-nlp==4.1.0
